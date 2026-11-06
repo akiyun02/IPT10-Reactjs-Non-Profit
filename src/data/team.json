@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Akiyun Macapinlac",
+    "role": "Founder, Full-Stack Developer & Solo Lead",
+    "title": "One-Man Team",
+    "image": "/img/team-1.jpg",
+    "isCurrentUser": true,
+    "bio": "I am a passionate student developer who founded and built Charitize as a dedicated one-man team. From crafting modern front-end user interfaces and building secure Stripe payment workflows to managing charitable initiatives, I oversee every aspect of this project. My goal is to use software engineering to create open, accessible, and high-impact solutions for communities in need.",
+    "badges": [
+      "Solo Developer",
+      "Full-Stack React & Node",
+      "Open Source Contributor"
+    ],
+    "social": {
+      "github": "https://github.com/akiyun02",
+      "email": "mailto:Bacron07@gmail.com",
+      "facebook": "https://facebook.com",
+      "twitter": "https://x.com"
+    }
+  }
+]

@@ -149,9 +149,16 @@ export default function DonationCauses() {
                     <h3 className="d-inline-block mb-2">{cause.title}</h3>
                     <p className="text-muted">{cause.desc}</p>
                   </div>
-                  <a href="#donate" className="btn btn-primary w-100 py-3 mt-3">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const el = document.getElementById('donate');
+                      if (el) el.scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    className="btn btn-primary w-100 py-3 mt-3 border-0"
+                  >
                     <i className="fa fa-plus me-2" />Donate Now
-                  </a>
+                  </button>
                 </div>
               </div>
             </div>

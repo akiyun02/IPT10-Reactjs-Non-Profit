@@ -8,7 +8,6 @@ interface NavbarProps {
 
 export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
   const [isScrolled, setIsScrolled] = useState<boolean>(false);
 
   useEffect(() => {
@@ -94,9 +93,9 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
             </div>
 
             <div className="d-none d-lg-flex ms-auto">
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="#"><i className="fab fa-x-twitter" /></a>
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="#"><i className="fab fa-facebook-f" /></a>
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="#"><i className="fab fa-youtube" /></a>
+              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i className="fab fa-x-twitter" /></a>
+              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i className="fab fa-facebook-f" /></a>
+              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i className="fab fa-youtube" /></a>
             </div>
           </div>
         </nav>

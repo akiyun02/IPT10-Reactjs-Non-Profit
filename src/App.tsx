@@ -22,27 +22,27 @@ export default function App() {
 
   return (
     <div className="charitize-app">
-      <Topbar />
+      <Topbar onNavigate={setCurrentPage} />
       <Navbar currentPage={currentPage} onNavigate={setCurrentPage} />
 
       <main>
         {currentPage === 'home' ? (
           <>
-            <HeroCarousel />
+            <HeroCarousel onNavigate={setCurrentPage} />
             <VideoBanner />
-            <About />
+            <About onNavigate={setCurrentPage} />
             <Features />
             <DonationCauses />
             <DonateForm />
-            <Team />
+            <Team onNavigate={setCurrentPage} />
             <Testimonials />
           </>
         ) : (
-          <AboutUsPage />
+          <AboutUsPage onNavigate={setCurrentPage} />
         )}
       </main>
-      <BackToTop/>
-      <Footer />
+      <BackToTop />
+      <Footer onNavigate={setCurrentPage} />
     </div>
   );
 }

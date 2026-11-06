@@ -22,7 +22,11 @@ const SLIDES: Slide[] = [
   },
 ];
 
-export default function HeroCarousel() {
+interface HeroCarouselProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+export default function HeroCarousel({ onNavigate }: HeroCarouselProps) {
   const [current, setCurrent] = useState<number>(0);
 
   useEffect(() => {
@@ -35,6 +39,22 @@ export default function HeroCarousel() {
   const nextSlide = () => setCurrent((prev) => (prev + 1) % SLIDES.length);
   const prevSlide = () => setCurrent((prev) => (prev - 1 + SLIDES.length) % SLIDES.length);
 
+  const handleDonateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    const el = document.getElementById('donate');
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const handleJoinClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('about');
+    } else {
+      const el = document.getElementById('about');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const slide = SLIDES[current];
 
   return (
@@ -46,8 +66,12 @@ export default function HeroCarousel() {
               <h1 className="display-1 text-uppercase mb-3">{slide.title}</h1>
               <p className="fs-5 mb-5">{slide.desc}</p>
               <div className="d-flex">
-                <a className="btn btn-primary py-3 px-4 me-3" href="#donate">Donate Now</a>
-                <a className="btn btn-secondary py-3 px-4" href="#about">Join Us Now</a>
+                <button type="button" onClick={handleDonateClick} className="btn btn-primary py-3 px-4 me-3 shadow-sm">
+                  Donate Now
+                </button>
+                <button type="button" onClick={handleJoinClick} className="btn btn-secondary py-3 px-4 shadow-sm">
+                  About Me & Us
+                </button>
               </div>
             </div>
           </div>

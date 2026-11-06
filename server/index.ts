@@ -43,9 +43,10 @@ app.post('/api/create-payment-intent', async (req: Request, res: Response): Prom
     });
 
     res.json({ clientSecret: paymentIntent.client_secret });
-  } catch (error: any) {
-    console.error('Stripe Error:', error.message);
-    res.status(500).json({ error: error.message });
+  } catch (error) {
+    const err = error as Error;
+    console.error('Stripe Error:', err.message);
+    res.status(500).json({ error: err.message });
   }
 });
 
