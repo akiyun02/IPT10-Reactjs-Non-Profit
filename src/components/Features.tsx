@@ -2,9 +2,10 @@ import { useState, useEffect, useRef } from 'react';
 
 interface CounterProps {
   target: number;
+  suffix?: string;
 }
 
-function AnimatedCounter({ target }: CounterProps) {
+function AnimatedCounter({ target, suffix = '' }: CounterProps) {
   const [count, setCount] = useState<number>(0);
   const elementRef = useRef<HTMLSpanElement | null>(null);
   const [hasStarted, setHasStarted] = useState<boolean>(false);
@@ -49,10 +50,39 @@ function AnimatedCounter({ target }: CounterProps) {
     return () => clearInterval(timer);
   }, [hasStarted, target]);
 
-  return <span ref={elementRef}>{count}</span>;
+  return (
+    <span ref={elementRef}>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
 }
 
-export default function Features() {
+interface FeaturesProps {
+  onNavigate?: (page: 'home' | 'about') => void;
+}
+
+export default function Features({ onNavigate }: FeaturesProps) {
+  const handleDonateClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) onNavigate('home');
+    setTimeout(() => {
+      const el = document.getElementById('donate');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 150);
+  };
+
+  const handleLearnMoreClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (onNavigate) {
+      onNavigate('about');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const el = document.getElementById('about');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div id="features" className="container-fluid py-5">
       <div className="container">
@@ -64,53 +94,74 @@ export default function Features() {
                   <div className="text-center bg-primary py-5 px-4 h-100">
                     <i className="fa fa-users fa-3x text-secondary mb-3" />
                     <h1 className="display-5 mb-0">
-                      <AnimatedCounter target={500} />
+                      <AnimatedCounter target={250} suffix="+" />
                     </h1>
-                    <span className="text-dark">Team Members</span>
+                    <span className="text-dark fw-bold">Active Supporters</span>
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <div className="text-center bg-secondary py-5 px-4 h-100">
-                    <i className="fa fa-award fa-3x text-primary mb-3" />
+                    <i className="fa fa-hand-holding-heart fa-3x text-primary mb-3" />
                     <h1 className="display-5 text-white mb-0">
-                      <AnimatedCounter target={70} />
+                      <AnimatedCounter target={15} suffix="+" />
                     </h1>
-                    <span className="text-white">Award Winning</span>
+                    <span className="text-white">Community Drives</span>
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <div className="text-center bg-secondary py-5 px-4 h-100">
-                    <i className="fa fa-list-check fa-3x text-primary mb-3" />
+                    <i className="fa fa-box-open fa-3x text-primary mb-3" />
                     <h1 className="display-5 text-white mb-0">
-                      <AnimatedCounter target={3000} />
+                      <AnimatedCounter target={1200} suffix="+" />
                     </h1>
-                    <span className="text-white">Total Projects</span>
+                    <span className="text-white">Care Kits & Meals</span>
                   </div>
                 </div>
                 <div className="col-sm-6">
                   <div className="text-center bg-primary py-5 px-4 h-100">
-                    <i className="fa fa-comments fa-3x text-secondary mb-3" />
+                    <i className="fa fa-shield-halved fa-3x text-secondary mb-3" />
                     <h1 className="display-5 mb-0">
-                      <AnimatedCounter target={7000} />
+                      <AnimatedCounter target={100} suffix="%" />
                     </h1>
-                    <span className="text-dark">Client's Review</span>
+                    <span className="text-dark fw-bold">Direct Transparency</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
           <div className="col-lg-6">
-            <p className="section-title bg-white text-start text-primary pe-3">Why Us!</p>
-            <h1 className="display-6 mb-4">Few Reasons Why People Choosing Us!</h1>
+            <p className="section-title bg-white text-start text-primary pe-3">Why Support Us</p>
+            <h1 className="display-6 mb-4">Why Back Our Non-Profit Initiative?</h1>
             <p className="mb-4">
-              We believe in creating opportunities and empowering communities through education, healthcare, and sustainable development. Your support helps us bring smiles, hope, and a brighter future to those in need.
+              Charitize cuts through bureaucratic overhead. As an agile, student-led initiative, we prioritize immediate, accountable relief directly delivered to communities that need it most.
             </p>
-            <p className="text-dark"><i className="fa fa-check text-primary me-2" />Justo magna erat amet</p>
-            <p className="text-dark"><i className="fa fa-check text-primary me-2" />Aliqu diam amet diam et eos</p>
-            <p className="text-dark"><i className="fa fa-check text-primary me-2" />Clita erat ipsum et lorem et sit</p>
-            <div className="d-flex mt-4">
-              <a className="btn btn-primary py-3 px-4 me-3" href="#donate">Donate Now</a>
-              <a className="btn btn-secondary py-3 px-4" href="#about">Join Us Now</a>
+            <p className="text-dark">
+              <i className="fa fa-check text-primary me-2" />
+              100% transparent fund utilization with public distribution tracking.
+            </p>
+            <p className="text-dark">
+              <i className="fa fa-check text-primary me-2" />
+              Grassroots community aid focused on child nutrition and school supplies.
+            </p>
+            <p className="text-dark">
+              <i className="fa fa-check text-primary me-2" />
+              Secure donation checkout backed by industry-standard Stripe encryption.
+            </p>
+            <div className="d-flex mt-4 gap-3">
+              <button
+                type="button"
+                onClick={handleDonateClick}
+                className="btn btn-primary py-3 px-4 shadow-sm"
+              >
+                Donate Now
+              </button>
+              <button
+                type="button"
+                onClick={handleLearnMoreClick}
+                className="btn btn-secondary py-3 px-4 shadow-sm"
+              >
+                About My Story
+              </button>
             </div>
           </div>
         </div>

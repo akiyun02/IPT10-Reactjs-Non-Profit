@@ -19,6 +19,15 @@ import BackToTop from './components/BackToTop';
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
+  const [selectedCause, setSelectedCause] = useState<string>('');
+
+  const handleSelectCause = (causeTitle: string) => {
+    setSelectedCause(causeTitle);
+    const el = document.getElementById('donate');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className="charitize-app">
@@ -31,9 +40,9 @@ export default function App() {
             <HeroCarousel onNavigate={setCurrentPage} />
             <VideoBanner />
             <About onNavigate={setCurrentPage} />
-            <Features />
-            <DonationCauses />
-            <DonateForm />
+            <Features onNavigate={setCurrentPage} />
+            <DonationCauses onSelectCause={handleSelectCause} />
+            <DonateForm selectedCause={selectedCause} onClearCause={() => setSelectedCause('')} />
             <Team onNavigate={setCurrentPage} />
             <Testimonials />
           </>

@@ -7,7 +7,7 @@ interface AboutData {
   title?: string;
   heading?: string;
   description?: string;
-  soloFounder?: {
+  founder?: {
     name: string;
     role: string;
     bio: string;
@@ -70,25 +70,26 @@ export default function About({ onNavigate }: AboutProps) {
                 alt={aboutData.alt || 'About'}
               />
               <span className="badge bg-primary position-absolute bottom-0 start-0 m-3 px-3 py-2 fs-6 text-white">
-                One-Man Team Initiative
+                Community Initiative
               </span>
             </div>
           </div>
           <div className="col-lg-6">
-            <p className="section-title bg-white text-start text-primary pe-3">{aboutData.title || 'About Us'}</p>
+            <p className="section-title bg-white text-start text-primary pe-3">{aboutData.title || 'About'}</p>
             <h1 className="display-6 mb-4">{aboutData.heading || 'Join Hands, Change the World'}</h1>
             <p className="mb-4">
               {aboutData.description ||
                 'Every hand extended in kindness brings us closer to a world free from suffering. Be part of a global movement dedicated to building a future where equality and compassion thrive.'}
             </p>
 
-            {aboutData.soloFounder && (
+            {aboutData.founder && (
               <div className="p-3 bg-light rounded mb-4 border-start border-primary border-4 text-start">
                 <h6 className="fw-bold text-dark mb-1">
-                  <i className="fa-solid fa-user-astronaut text-primary me-2" />
-                  {aboutData.soloFounder.name} &mdash; <span className="text-muted fw-normal">{aboutData.soloFounder.role}</span>
+                  <i className="fa-solid fa-hand-holding-heart text-primary me-2" />
+                  {aboutData.founder.name} &mdash;{' '}
+                  <span className="text-muted fw-normal">{aboutData.founder.role}</span>
                 </h6>
-                <p className="small text-muted mb-0">{aboutData.soloFounder.bio}</p>
+                <p className="small text-muted mb-0">{aboutData.founder.bio}</p>
               </div>
             )}
 

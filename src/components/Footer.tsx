@@ -39,18 +39,21 @@ export default function Footer({ onNavigate }: FooterProps) {
         <div className="container">
           <div className="row justify-content-center">
             <div className="col-lg-7 text-center">
-              <h1 className="display-6 mb-4">Subscribe to our Newsletter</h1>
+              <h1 className="display-6 mb-3">Stay Connected with Our Mission</h1>
+              <p className="text-dark mb-4">
+                Receive direct updates on food deliveries, outreach drives, and community milestones.
+              </p>
               {subscribed ? (
                 <div className="alert alert-light py-3 px-4 shadow-sm mb-2 text-dark fw-bold">
                   <i className="fa fa-check-circle text-success me-2" />
-                  Thank you! You have successfully subscribed to updates.
+                  Thank you! You have successfully subscribed to community updates.
                 </div>
               ) : (
                 <form onSubmit={handleSubscribe} className="position-relative w-100 mb-2">
                   <input
-                    className="form-control border-0 w-100 ps-4 pe-5"
+                    className="form-control border-0 w-100 ps-4 pe-5 rounded"
                     type="email"
-                    placeholder="Enter Your Email"
+                    placeholder="Enter your email address"
                     style={{ height: '60px' }}
                     value={newsletterEmail}
                     onChange={(e) => setNewsletterEmail(e.target.value)}
@@ -65,26 +68,26 @@ export default function Footer({ onNavigate }: FooterProps) {
                   </button>
                 </form>
               )}
-              <p className="mb-0 text-white-50">Don't worry, we won't spam you with emails.</p>
+              <p className="mb-0 text-white-50 small">Zero spam. Only meaningful mission updates.</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Footer */}
-      <footer className="container-fluid footer py-5">
+      <footer id="contact" className="container-fluid footer py-5">
         <div className="container">
           <div className="row g-5 py-5">
             <div className="col-lg-3 col-md-6">
-              <h4 className="text-light mb-4">Our Office</h4>
+              <h4 className="text-light mb-4">Get In Touch</h4>
               <p className="mb-2">
                 <i className="fa fa-map-marker-alt me-3 text-primary" />
-                123 Street, New York, USA
+                Metro Manila, Philippines
               </p>
               <p className="mb-2">
                 <i className="fa fa-phone-alt me-3 text-primary" />
-                <a href="tel:+0123456789" className="text-white-50 text-decoration-none">
-                  +012 345 67890
+                <a href="tel:+639175550199" className="text-white-50 text-decoration-none">
+                  +63 917 555 0199
                 </a>
               </p>
               <p className="mb-2">
@@ -94,6 +97,16 @@ export default function Footer({ onNavigate }: FooterProps) {
                 </a>
               </p>
               <div className="d-flex pt-3">
+                <a
+                  className="btn btn-square btn-primary me-2 text-white"
+                  href="https://github.com/akiyun02"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  title="GitHub Profile"
+                >
+                  <i className="fab fa-github" />
+                </a>
                 <a
                   className="btn btn-square btn-primary me-2 text-white"
                   href="https://x.com"
@@ -121,15 +134,6 @@ export default function Footer({ onNavigate }: FooterProps) {
                 >
                   <i className="fab fa-youtube" />
                 </a>
-                <a
-                  className="btn btn-square btn-primary me-2 text-white"
-                  href="https://github.com/akiyun02"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="GitHub"
-                >
-                  <i className="fab fa-github" />
-                </a>
               </div>
             </div>
             <div className="col-lg-3 col-md-6">
@@ -139,14 +143,21 @@ export default function Footer({ onNavigate }: FooterProps) {
                 className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
                 onClick={() => handleNavigateTo('about')}
               >
-                &rsaquo; About Us &amp; Me
+                &rsaquo; About the Mission
               </button>
               <button
                 type="button"
                 className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
                 onClick={() => handleNavigateTo('home', 'donation')}
               >
-                &rsaquo; Our Causes
+                &rsaquo; Active Causes
+              </button>
+              <button
+                type="button"
+                className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
+                onClick={() => handleNavigateTo('home', 'features')}
+              >
+                &rsaquo; Why Support Us
               </button>
               <button
                 type="button"
@@ -158,33 +169,33 @@ export default function Footer({ onNavigate }: FooterProps) {
               <button
                 type="button"
                 className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
-                onClick={() => setInfoModalMessage('Terms & Conditions: Charitize is operated as an educational and non-profit open initiative. All donations support community charity missions.')}
+                onClick={() => setInfoModalMessage('Terms & Conditions: Charitize is operated as an independent non-profit and educational initiative. 100% of received funds support community pantry drives, clean water access, and school aid.')}
               >
-                &rsaquo; Terms &amp; Conditions
+                &rsaquo; Terms &amp; Transparency
               </button>
               <button
                 type="button"
                 className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
-                onClick={() => setInfoModalMessage('Support: For support, partnerships, or inquiries, reach out directly at Bacron07@gmail.com.')}
+                onClick={() => setInfoModalMessage('Support & Inquiries: For partnerships, questions, or supply donations, contact our team directly at Bacron07@gmail.com or +63 917 555 0199.')}
               >
                 &rsaquo; Support &amp; FAQ
               </button>
             </div>
             <div className="col-lg-3 col-md-6">
-              <h4 className="text-light mb-4">Business Hours</h4>
+              <h4 className="text-light mb-4">Active Hours</h4>
               <p className="mb-1 text-white-50">Monday - Friday</p>
-              <h6 className="text-light">09:00 am - 07:00 pm</h6>
-              <p className="mb-1 text-white-50">Saturday</p>
-              <h6 className="text-light">09:00 am - 12:00 pm</h6>
+              <h6 className="text-light">08:00 am - 06:00 pm</h6>
+              <p className="mb-1 text-white-50">Saturday (Community Drives)</p>
+              <h6 className="text-light">09:00 am - 04:00 pm</h6>
               <p className="mb-1 text-white-50">Sunday</p>
-              <h6 className="text-light">Closed</h6>
+              <h6 className="text-light">Emergency Relief Standby</h6>
             </div>
             <div className="col-lg-3 col-md-6">
-              <h4 className="text-light mb-4">Gallery</h4>
+              <h4 className="text-light mb-4">Outreach Gallery</h4>
               <div className="row g-2">
                 {[1, 2, 3, 4, 5, 6].map((num) => (
                   <div key={num} className="col-4">
-                    <img className="img-fluid w-100 rounded" src={`/img/gallery-${num}.jpg`} alt={`Gallery ${num}`} />
+                    <img className="img-fluid w-100 rounded" src={`/img/gallery-${num}.jpg`} alt={`Community Outreach ${num}`} />
                   </div>
                 ))}
               </div>
@@ -192,7 +203,7 @@ export default function Footer({ onNavigate }: FooterProps) {
           </div>
           <div className="copyright pt-5 border-top border-secondary">
             <div className="row">
-              <div className="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white-50">
+              <div className="col-md-7 text-center text-md-start mb-3 mb-md-0 text-white-50">
                 &copy;{' '}
                 <button
                   type="button"
@@ -201,11 +212,10 @@ export default function Footer({ onNavigate }: FooterProps) {
                 >
                   Charitize
                 </button>
-                , All Rights Reserved. Built by{' '}
-                <strong className="text-white">Akiyun Macapinlac</strong> (One-Man Team).
+                , All Rights Reserved. Independent Community Non-Profit Initiative.
               </div>
-              <div className="col-md-6 text-center text-md-end text-white-50">
-                Designed By <span className="fw-semi-bold text-white">HTML Codex</span>
+              <div className="col-md-5 text-center text-md-end text-white-50">
+                Open Philanthropy Platform &bull; Built with React &amp; Stripe
               </div>
             </div>
           </div>
@@ -232,7 +242,7 @@ export default function Footer({ onNavigate }: FooterProps) {
                 />
               </div>
               <div className="modal-body p-4">
-                <p className="mb-0 text-dark">{infoModalMessage}</p>
+                <p className="mb-0 text-dark" style={{ lineHeight: '1.6' }}>{infoModalMessage}</p>
               </div>
               <div className="modal-footer">
                 <button

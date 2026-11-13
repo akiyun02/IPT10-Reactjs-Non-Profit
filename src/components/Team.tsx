@@ -56,10 +56,10 @@ export default function Team({ onNavigate }: TeamProps) {
     <div id="team" className="container-fluid py-5">
       <div className="container">
         <div className="text-center mx-auto mb-5" style={{ maxWidth: 650 }}>
-          <p className="section-title bg-white text-center text-primary px-3">One-Man Team</p>
-          <h1 className="display-6 mb-3">About Me & The Mission</h1>
+          <p className="section-title bg-white text-center text-primary px-3">Founder</p>
+          <h1 className="display-6 mb-3">About the Founder & Developer</h1>
           <p className="text-muted">
-            Charitize is powered by a dedicated solo founder and developer passionate about high-impact change.
+            Charitize was built to drive direct, transparent community relief through modern web technology.
           </p>
         </div>
         <div className="row justify-content-center">
@@ -76,7 +76,7 @@ export default function Team({ onNavigate }: TeamProps) {
                         style={{ width: '100%', maxHeight: '350px', objectFit: 'cover' }}
                       />
                       <span className="badge bg-secondary position-absolute top-0 start-0 m-3 px-3 py-2 fs-6">
-                        {m.title || 'One-Man Team'}
+                        {m.title || 'Founder'}
                       </span>
                     </div>
 
@@ -131,7 +131,7 @@ export default function Team({ onNavigate }: TeamProps) {
                   </div>
 
                   <div className="col-md-7 ps-md-4">
-                    <span className="text-primary fw-bold text-uppercase small">One-Man Team</span>
+                    <span className="text-primary fw-bold text-uppercase small">Founder &amp; Developer</span>
                     <h2 className="display-6 fw-bold mb-1">{m.name}</h2>
                     <p className="text-muted fs-5 mb-3">{m.role}</p>
 

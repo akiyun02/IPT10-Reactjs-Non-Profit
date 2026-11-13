@@ -1,16 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Akiyun Macapinlac",
-    "role": "Founder, Full-Stack Developer & Solo Lead",
-    "title": "One-Man Team",
+    "name": "Andre Macapinlac",
+    "role": "Founder & Lead Developer",
+    "title": "Founder",
     "image": "/img/team-1.jpg",
     "isCurrentUser": true,
-    "bio": "I am a passionate student developer who founded and built Charitize as a dedicated one-man team. From crafting modern front-end user interfaces and building secure Stripe payment workflows to managing charitable initiatives, I oversee every aspect of this project. My goal is to use software engineering to create open, accessible, and high-impact solutions for communities in need.",
+    "bio": "I'm Andre Macapinlac, founder of Charitize and a software engineering student. I created Charitize to bridge modern web technology with grassroots philanthropy, ensuring that community assistance is delivered directly, transparently, and effectively. From designing the web interface and secure Stripe payment workflows to organizing local outreach drives, my focus is on providing reliable support to families in need.",
     "badges": [
-      "Solo Developer",
-      "Full-Stack React & Node",
-      "Open Source Contributor"
+      "Founder & Lead",
+      "Full-Stack Web Engineering",
+      "Community Outreach",
+      "Stripe Integration"
     ],
     "social": {
       "github": "https://github.com/akiyun02",

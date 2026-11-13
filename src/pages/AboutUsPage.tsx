@@ -12,7 +12,7 @@ export default function AboutUsPage({ onNavigate }: AboutUsPageProps) {
       {/* Page Header Banner */}
       <div className="container-fluid page-header py-5 mb-5">
         <div className="container text-center py-5">
-          <h1 className="display-4 text-white mb-3">About Us</h1>
+          <h1 className="display-4 text-white mb-3">About</h1>
           <nav aria-label="breadcrumb">
             <ol className="breadcrumb justify-content-center mb-0">
               <li className="breadcrumb-item">
@@ -25,7 +25,7 @@ export default function AboutUsPage({ onNavigate }: AboutUsPageProps) {
                 </button>
               </li>
               <li className="breadcrumb-item text-primary active" aria-current="page">
-                About Us
+                About
               </li>
             </ol>
           </nav>
@@ -36,9 +36,9 @@ export default function AboutUsPage({ onNavigate }: AboutUsPageProps) {
       <About onNavigate={onNavigate} />
 
       {/* Features Section */}
-      <Features />
+      <Features onNavigate={onNavigate} />
 
-      {/* Our Team Section - One-man team with bio */}
+      {/* Founder Section */}
       <Team onNavigate={onNavigate} />
     </div>
   );

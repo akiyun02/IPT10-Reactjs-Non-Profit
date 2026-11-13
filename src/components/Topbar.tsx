@@ -30,7 +30,7 @@ export default function Topbar({ onNavigate }: TopbarProps) {
             <div className="col-lg-4">
               <div className="d-flex align-items-center justify-content-end">
                 <a
-                  href="tel:+0123456789"
+                  href="tel:+639175550199"
                   className="flex-shrink-0 btn-square bg-primary d-flex align-items-center justify-content-center text-decoration-none"
                   style={{ width: 45, height: 45 }}
                   aria-label="Call Phone Number"
@@ -39,8 +39,8 @@ export default function Topbar({ onNavigate }: TopbarProps) {
                 </a>
                 <div className="ms-3 text-start">
                   <h6 className="text-primary mb-0">Call Us</h6>
-                  <a href="tel:+0123456789" className="text-white text-decoration-none small">
-                    +012 345 6789
+                  <a href="tel:+639175550199" className="text-white text-decoration-none small">
+                    +63 917 555 0199
                   </a>
                 </div>
               </div>
@@ -72,8 +72,8 @@ export default function Topbar({ onNavigate }: TopbarProps) {
                   <i className="fa-solid fa-location-dot text-dark fs-5" />
                 </div>
                 <div className="ms-3 text-start">
-                  <h6 className="text-primary mb-0">Address</h6>
-                  <span className="text-white small">123 Street, NY, USA</span>
+                  <h6 className="text-primary mb-0">Location</h6>
+                  <span className="text-white small">Metro Manila, Philippines</span>
                 </div>
               </div>
             </div>

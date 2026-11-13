@@ -42,7 +42,7 @@ export default function CheckoutForm({
       elements,
       confirmParams: {
         // Fallback return URL for redirect-based payment methods (iDEAL, 3DS, etc.)
-        return_url: `${window.location.origin}/payment-success`,
+        return_url: `${window.location.origin}?status=success`,
         payment_method_data: {
           billing_details: {
             name: donorName,

@@ -26,6 +26,20 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const handleSectionScroll = (sectionId: string) => {
+    setIsOpen(false);
+    if (currentPage !== 'home' && onNavigate) {
+      onNavigate('home');
+      setTimeout(() => {
+        const el = document.getElementById(sectionId);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+      }, 150);
+    } else {
+      const el = document.getElementById(sectionId);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div
       className="container-fluid bg-secondary px-0"
@@ -72,30 +86,91 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
               >
                 About
               </button>
-           {/*   <a href="#donation" className="nav-item nav-link">Donation</a>
-
-              <div className="nav-item dropdown position-relative">
-                <button
-                  type="button"
-                  className="nav-link dropdown-toggle bg-transparent border-0 d-flex align-items-center"
-                  onClick={() => setDropdownOpen(!dropdownOpen)}
-                >
-                  Pages
-                </button>
-                <div className={`dropdown-menu bg-light m-0 ${dropdownOpen ? 'show' : ''}`}>
-                  <a href="#features" className="dropdown-item">Feature</a>
-                  <a href="#team" className="dropdown-item">Our Team</a>
-                  <a href="#testimonials" className="dropdown-item">Testimonial</a>
-                </div>
-              </div>
-*/}
-              {/*<a href="#contact" className="nav-item nav-link">Contact</a>*/}
+              <button
+                type="button"
+                className="nav-item nav-link btn btn-link text-start text-decoration-none"
+                onClick={() => handleSectionScroll('donation')}
+              >
+                Causes
+              </button>
+              <button
+                type="button"
+                className="nav-item nav-link btn btn-link text-start text-decoration-none"
+                onClick={() => handleSectionScroll('features')}
+              >
+                Why Us
+              </button>
+              <button
+                type="button"
+                className="nav-item nav-link btn btn-link text-start text-decoration-none"
+                onClick={() => handleSectionScroll('team')}
+              >
+                Founder
+              </button>
+              <button
+                type="button"
+                className="nav-item nav-link btn btn-link text-start text-decoration-none"
+                onClick={() => handleSectionScroll('testimonials')}
+              >
+                Testimonials
+              </button>
+              <button
+                type="button"
+                className="nav-item nav-link btn btn-link text-start text-decoration-none"
+                onClick={() => handleSectionScroll('contact')}
+              >
+                Contact
+              </button>
             </div>
 
-            <div className="d-none d-lg-flex ms-auto">
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://x.com" target="_blank" rel="noopener noreferrer" aria-label="X (Twitter)"><i className="fab fa-x-twitter" /></a>
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i className="fab fa-facebook-f" /></a>
-              <a className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center" href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i className="fab fa-youtube" /></a>
+            <div className="d-flex align-items-center ms-auto py-2 py-lg-0">
+              <button
+                type="button"
+                onClick={() => handleSectionScroll('donate')}
+                className="btn btn-secondary px-3 py-2 me-3 fw-bold shadow-sm d-flex align-items-center"
+              >
+                <i className="fa-solid fa-heart me-2 text-primary" />
+                Donate
+              </button>
+              <div className="d-none d-lg-flex">
+                <a
+                  className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center"
+                  href="https://github.com/akiyun02"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="GitHub Profile"
+                  title="GitHub Profile"
+                >
+                  <i className="fab fa-github" />
+                </a>
+                <a
+                  className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center"
+                  href="https://x.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                >
+                  <i className="fab fa-x-twitter" />
+                </a>
+                <a
+                  className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center"
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Facebook"
+                >
+                  <i className="fab fa-facebook-f" />
+                </a>
+                <a
+                  className="btn btn-square btn-dark ms-2 d-flex align-items-center justify-content-center"
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="YouTube"
+                >
+                  <i className="fab fa-youtube" />
+                </a>
+              </div>
             </div>
           </div>
         </nav>

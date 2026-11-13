@@ -49,6 +49,7 @@ export default function HeroCarousel({ onNavigate }: HeroCarouselProps) {
     e.preventDefault();
     if (onNavigate) {
       onNavigate('about');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
       const el = document.getElementById('about');
       if (el) el.scrollIntoView({ behavior: 'smooth' });
@@ -70,7 +71,7 @@ export default function HeroCarousel({ onNavigate }: HeroCarouselProps) {
                   Donate Now
                 </button>
                 <button type="button" onClick={handleJoinClick} className="btn btn-secondary py-3 px-4 shadow-sm">
-                  About Me & Us
+                  About Our Mission
                 </button>
               </div>
             </div>
@@ -96,7 +97,7 @@ export default function HeroCarousel({ onNavigate }: HeroCarouselProps) {
         style={{ width: '45px', height: '45px', borderRadius: '50%', zIndex: 10 }}
         aria-label="Previous slide"
       >
-        <i className="bi bi-chevron-left" />
+        <i className="fa-solid fa-chevron-left text-white" />
       </button>
 
       <button
@@ -106,7 +107,7 @@ export default function HeroCarousel({ onNavigate }: HeroCarouselProps) {
         style={{ width: '45px', height: '45px', borderRadius: '50%', zIndex: 10 }}
         aria-label="Next slide"
       >
-        <i className="bi bi-chevron-right" />
+        <i className="fa-solid fa-chevron-right text-white" />
       </button>
 
       {/* Dots Indicator */}

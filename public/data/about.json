@@ -1,25 +1,25 @@
-  {
-  "title": "About Us",
+{
+  "title": "About",
   "heading": "Join Hands, Change the World",
   "image": "/img/about.jpg",
   "alt": "About Charitize Non-Profit Organization",
-  "description": "Charitize is an independent non-profit initiative driven by Akiyun Macapinlac as a one-man team. We believe that with dedication, passion, and modern technology, a single focused individual can spark meaningful impact. Every hand extended in kindness brings us closer to a world free from suffering.",
-  "soloFounder": {
-    "name": "Akiyun Macapinlac",
-    "role": "Solo Founder & Developer",
-    "bio": "Building this platform as a one-man team, I manage every stage from full-stack web engineering and digital donation pipelines to partner cause coordination. Our lean, transparent model guarantees that help goes straight to those who need it most."
+  "description": "Charitize is an independent non-profit initiative dedicated to uplifting underprivileged communities through direct action and technology. We believe that with dedication, empathy, and transparent solutions, we can spark lasting, meaningful impact. Every hand extended in kindness brings us closer to a world where everyone has the opportunity to thrive.",
+  "founder": {
+    "name": "Andre Macapinlac",
+    "role": "Founder & Lead Developer",
+    "bio": "Charitize was founded to streamline charitable aid using modern web technology. By maintaining a lean, transparent operation, we ensure that resources go straight to communities in need without unnecessary overhead."
   },
   "mission": {
     "title": "Our Mission",
-    "description": "Our mission is to uplift underprivileged communities by providing resources, education, and tools for growth through agile, transparent solo-led initiatives.",
+    "description": "Our mission is to uplift underprivileged communities by providing nutritious food, educational resources, and clean water access through transparent, community-centered initiatives.",
     "points": [
-      "No one should go to bed hungry.",
-      "We spread kindness and direct support.",
-      "100% transparent, community-driven, one-man team operation."
+      "Nutritious food assistance so no family goes to bed hungry.",
+      "Educational supplies and school kits for underprivileged youths.",
+      "100% transparent and accountable community-first operation."
     ]
   },
   "donationCallout": {
-    "text": "Through your donations, we spread kindness and support to children and families in need.",
+    "text": "Every contribution fuels immediate aid, warm meals, and school essentials for families in need.",
     "buttonText": "Donate Now",
     "buttonLink": "#donate"
   }

@@ -15,37 +15,41 @@ interface CauseItem {
 const CAUSES: CauseItem[] = [
   {
     id: 1,
-    category: 'Food',
-    title: 'Healthy Food',
-    raised: 8000,
-    goal: 10000,
+    category: 'Nutrition',
+    title: 'Community Food Drives',
+    raised: 4250,
+    goal: 5000,
     progressPercent: 85,
     imgSrc: '/img/donation-1.jpg',
-    desc: 'Through your donations and volunteer work, we spread kindness and support to children.',
+    desc: 'Providing fresh, nutritious food baskets, warm meals, and pantry staples to vulnerable children and low-income families.',
   },
   {
     id: 2,
-    category: 'Health',
-    title: 'Water Treatment',
-    raised: 8000,
-    goal: 10000,
+    category: 'Clean Water',
+    title: 'Clean Water & Sanitation',
+    raised: 2850,
+    goal: 3000,
     progressPercent: 95,
     imgSrc: '/img/donation-2.jpg',
-    desc: 'Through your donations and volunteer work, we spread kindness and support to children.',
+    desc: 'Distributing water filtration systems and sanitation hygiene kits to community centers lacking safe drinking water.',
   },
   {
     id: 3,
     category: 'Education',
-    title: 'Education Support',
-    raised: 8000,
-    goal: 10000,
+    title: 'Youth School Supplies',
+    raised: 3750,
+    goal: 5000,
     progressPercent: 75,
     imgSrc: '/img/donation-3.jpg',
-    desc: 'Through your donations and volunteer work, we spread kindness and support to children.',
+    desc: 'Equipping underprivileged elementary and high school students with backpacks, notebooks, uniforms, and learning tools.',
   },
 ];
 
-export default function DonationCauses() {
+interface DonationCausesProps {
+  onSelectCause?: (causeTitle: string) => void;
+}
+
+export default function DonationCauses({ onSelectCause }: DonationCausesProps) {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
 
@@ -56,7 +60,7 @@ export default function DonationCauses() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.25 } // Triggers when 25% of the section enters the screen
+      { threshold: 0.25 }
     );
 
     const el = sectionRef.current;
@@ -67,12 +71,24 @@ export default function DonationCauses() {
     };
   }, []);
 
+  const handleDonateForCause = (causeTitle: string) => {
+    if (onSelectCause) {
+      onSelectCause(causeTitle);
+    } else {
+      const el = document.getElementById('donate');
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
+
   return (
     <div id="donation" ref={sectionRef} className="container-fluid py-5">
       <div className="container">
-        <div className="text-center mx-auto mb-5" style={{ maxWidth: 500 }}>
-          <p className="section-title bg-white text-center text-primary px-3">Donation</p>
-          <h1 className="display-6 mb-4">Our Donation Causes Around the World</h1>
+        <div className="text-center mx-auto mb-5" style={{ maxWidth: 550 }}>
+          <p className="section-title bg-white text-center text-primary px-3">Active Causes</p>
+          <h1 className="display-6 mb-3">Our Transparent Community Causes</h1>
+          <p className="text-muted mb-0">Every donation directly funds verified supplies and on-the-ground support.</p>
         </div>
         <div className="row g-4">
           {CAUSES.map((cause) => (
@@ -89,7 +105,7 @@ export default function DonationCauses() {
                   style={{ width: '65px' }}
                 >
                   <h6 className="mb-0 small text-muted">Raised</h6>
-                  <span className="mb-2 fw-bold text-dark">${cause.raised}</span>
+                  <span className="mb-2 fw-bold text-dark">${cause.raised.toLocaleString()}</span>
 
                   {/* Outer track */}
                   <div 
@@ -106,10 +122,8 @@ export default function DonationCauses() {
                       className="progress-bar bg-secondary d-flex align-items-center justify-content-center" 
                       role="progressbar" 
                       style={{ 
-                        // Animate height from 0% to target percent
                         height: isVisible ? `${cause.progressPercent}%` : '0%',
                         width: '100%',
-                        // Cubic-bezier for an energetic rise animation
                         transition: 'height 1.4s cubic-bezier(0.25, 1, 0.5, 1)',
                       }}
                       aria-valuenow={cause.progressPercent} 
@@ -129,7 +143,7 @@ export default function DonationCauses() {
                   </div>
 
                   <h6 className="mb-0 small text-muted">Goal</h6>
-                  <span className="fw-bold text-dark">${cause.goal}</span>
+                  <span className="fw-bold text-dark">${cause.goal.toLocaleString()}</span>
                 </div>
 
                 {/* Content details */}
@@ -140,24 +154,21 @@ export default function DonationCauses() {
                         className="img-fluid w-100" 
                         src={cause.imgSrc} 
                         alt={cause.title} 
-                        style={{ transition: 'transform 0.5s ease' }}
+                        style={{ transition: 'transform 0.5s ease', height: '180px', objectFit: 'cover' }}
                       />
                       <span className="btn btn-sm btn-secondary px-3 position-absolute top-0 end-0 m-2">
                         {cause.category}
                       </span>
                     </div>
-                    <h3 className="d-inline-block mb-2">{cause.title}</h3>
-                    <p className="text-muted">{cause.desc}</p>
+                    <h4 className="d-inline-block mb-2">{cause.title}</h4>
+                    <p className="text-muted small mb-3">{cause.desc}</p>
                   </div>
                   <button
                     type="button"
-                    onClick={() => {
-                      const el = document.getElementById('donate');
-                      if (el) el.scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="btn btn-primary w-100 py-3 mt-3 border-0"
+                    onClick={() => handleDonateForCause(cause.title)}
+                    className="btn btn-primary w-100 py-3 mt-2 border-0 shadow-sm"
                   >
-                    <i className="fa fa-plus me-2" />Donate Now
+                    <i className="fa fa-heart me-2" />Donate to {cause.category}
                   </button>
                 </div>
               </div>

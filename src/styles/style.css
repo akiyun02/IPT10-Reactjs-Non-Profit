@@ -103,7 +103,7 @@
 .navbar .dropdown-toggle::after {
     border: none;
     content: "\f107";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
     vertical-align: middle;
     margin-left: 8px;
@@ -144,7 +144,7 @@
 /*** Header Carousel ***/
 .header-carousel {
     position: relative;
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -173,7 +173,7 @@
 }
 
 .page-header {
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -355,7 +355,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -413,7 +413,7 @@
 /*** Banner ***/
 .banner .banner-inner {
     position: relative;
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -454,7 +454,7 @@
 /*** Donate ***/
 .donate .donate-text {
     position: relative;
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -531,7 +531,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background: url(../img/bg.jpg) center center no-repeat;
+    background: url(/img/bg.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -591,7 +591,7 @@
 /*** Footer ***/
 .footer {
     color: var(--bs-tertiary);
-    background: linear-gradient(rgba(5, 19, 17, .95), rgba(5, 19, 17, .95)), url(../img/bg-footer.jpg) center center no-repeat;
+    background: linear-gradient(rgba(5, 19, 17, .95), rgba(5, 19, 17, .95)), url(/img/bg-footer.jpg) center center no-repeat;
     background-size: cover;
 }
 
@@ -609,7 +609,7 @@
 .footer .btn.btn-link::before {
     position: relative;
     content: "\f105";
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free", sans-serif;
     font-weight: 900;
     margin-right: 10px;
 }
@@ -622,4 +622,15 @@
 
 .footer .copyright {
     border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+/* Smooth Section Scroll Offsets for Sticky Navbar */
+#about,
+#features,
+#donation,
+#donate,
+#team,
+#testimonials,
+#contact {
+    scroll-margin-top: 85px;
 }

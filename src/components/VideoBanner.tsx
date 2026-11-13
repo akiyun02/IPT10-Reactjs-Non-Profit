@@ -23,9 +23,20 @@ export default function VideoBanner() {
               </div>
             </div>
             <div className="d-none d-lg-block col-lg-1">
-              <div className="h-100 w-100 bg-secondary d-flex align-items-center justify-content-center">
-                <span className="text-white" style={{ transform: 'rotate(-90deg)' }}>Scroll Down</span>
-              </div>
+              <button
+                type="button"
+                onClick={() => {
+                  const el = document.getElementById('about');
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }}
+                className="btn h-100 w-100 bg-secondary d-flex align-items-center justify-content-center p-0 border-0 rounded-0"
+                style={{ cursor: 'pointer' }}
+                aria-label="Scroll down to About section"
+              >
+                <span className="text-white" style={{ transform: 'rotate(-90deg)', whiteSpace: 'nowrap' }}>
+                  Scroll Down
+                </span>
+              </button>
             </div>
           </div>
         </div>
