@@ -105,7 +105,7 @@ export default function Navbar({ currentPage = 'home', onNavigate }: NavbarProps
                 className="nav-item nav-link btn btn-link text-start text-decoration-none"
                 onClick={() => handleSectionScroll('team')}
               >
-                Founder
+                Team
               </button>
               <button
                 type="button"

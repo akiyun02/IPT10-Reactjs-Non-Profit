@@ -48,7 +48,7 @@ export default function Topbar({ onNavigate }: TopbarProps) {
             <div className="col-lg-4">
               <div className="d-flex align-items-center justify-content-end">
                 <a
-                  href="mailto:Bacron07@gmail.com"
+                  href="mailto:Charitize@gmail.com"
                   className="flex-shrink-0 btn-square bg-primary d-flex align-items-center justify-content-center text-decoration-none"
                   style={{ width: 45, height: 45 }}
                   aria-label="Send Email"
@@ -58,7 +58,7 @@ export default function Topbar({ onNavigate }: TopbarProps) {
                 <div className="ms-3 text-start">
                   <h6 className="text-primary mb-0">Mail Us</h6>
                   <a href="mailto:Bacron07@gmail.com" className="text-white text-decoration-none small">
-                    Bacron07@gmail.com
+                    Charitize@gmail.com
                   </a>
                 </div>
               </div>

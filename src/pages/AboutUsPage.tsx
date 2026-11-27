@@ -38,7 +38,7 @@ export default function AboutUsPage({ onNavigate }: AboutUsPageProps) {
       {/* Features Section */}
       <Features onNavigate={onNavigate} />
 
-      {/* Founder Section */}
+      {/* Team Section */}
       <Team onNavigate={onNavigate} />
     </div>
   );

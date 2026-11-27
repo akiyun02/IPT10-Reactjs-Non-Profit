@@ -162,6 +162,13 @@ export default function Footer({ onNavigate }: FooterProps) {
               <button
                 type="button"
                 className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
+                onClick={() => handleNavigateTo('home', 'team')}
+              >
+                &rsaquo; Our Team
+              </button>
+              <button
+                type="button"
+                className="btn btn-link text-white-50 text-decoration-none d-block p-0 mb-2 border-0 text-start"
                 onClick={() => handleNavigateTo('home', 'donate')}
               >
                 &rsaquo; Donate Now

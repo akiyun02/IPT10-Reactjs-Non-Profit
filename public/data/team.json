@@ -2,22 +2,112 @@
   {
     "id": 1,
     "name": "Andre Macapinlac",
-    "role": "Founder & Lead Developer",
-    "title": "Founder",
+    "role": "Developer",
+    "title": "Developer",
     "image": "/img/team-1.jpg",
-    "isCurrentUser": true,
-    "bio": "I'm Andre Macapinlac, founder of Charitize and a software engineering student. I created Charitize to bridge modern web technology with grassroots philanthropy, ensuring that community assistance is delivered directly, transparently, and effectively. From designing the web interface and secure Stripe payment workflows to organizing local outreach drives, my focus is on providing reliable support to families in need.",
+    "isCurrentUser": false,
+    "bio": "Software engineering student and founder of Charitize. Leads full-stack web engineering, Stripe payment systems, and coordinates transparent community philanthropy.",
     "badges": [
-      "Founder & Lead",
-      "Full-Stack Web Engineering",
-      "Community Outreach",
-      "Stripe Integration"
+      "Founder",
+      "Full-Stack Web",
+      "Stripe Gateway"
     ],
     "social": {
       "github": "https://github.com/akiyun02",
       "email": "mailto:Bacron07@gmail.com",
       "facebook": "https://facebook.com",
       "twitter": "https://x.com"
+    }
+  },
+  {
+    "id": 2,
+    "name": "Gio Viera",
+    "role": "Operations & Outreach Director",
+    "title": "Operations",
+    "image": "/img/team-2.jpg",
+    "isCurrentUser": false,
+    "bio": "Oversees ground-level community missions, directing nutritious food distribution pantries and establishing trusted partnerships with local barangays.",
+    "badges": [
+      "Field Operations",
+      "Community Outreach",
+      "Relief Drives"
+    ],
+    "social": {
+      "email": "mailto:sofia.alvarez@example.com",
+      "facebook": "https://www.instagram.com/_.koi._.fish._/?utm_source=qr",
+      "twitter": "https://www.instagram.com/_.koi._.fish._/?utm_source=qr"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Zyke Licudine",
+    "role": "Logistics & Supply Coordinator",
+    "title": "Logistics",
+    "image": "/img/team-3.jpg",
+    "isCurrentUser": false,
+    "bio": "Manages procurement, inventory tracking, and efficient transport of essential food staples, hygiene packs, and water filtration equipment.",
+    "badges": [
+      "Supply Chain",
+      "Procurement",
+      "Resource Logistics"
+    ],
+    "social": {
+      "email": "mailto:marcus.vance@example.com",
+      "twitter": "https://www.instagram.com/z.ykeee/"
+    }
+  },
+  {
+    "id": 4,
+    "name": "Harold Tulabut",
+    "role": "Volunteer & Community Relations",
+    "title": "Volunteers",
+    "image": "/img/team-4.jpg",
+    "isCurrentUser": false,
+    "bio": "Coordinates volunteer orientations, mobilizes youth advocates, and ensures that on-the-ground support operations run smoothly, safely, and respectfully.",
+    "badges": [
+      "Volunteer Lead",
+      "Partner Relations",
+      "Community Engagement"
+    ],
+    "social": {
+      "email": "mailto:elena.ramirez@example.com",
+      "facebook": "https://www.instagram.com/duane.pt/"
+    }
+  },
+  {
+    "id": 5,
+    "name": "Andre Santos",
+    "role": "Finance & Transparency Officer",
+    "title": "Finance",
+    "image": "/img/team-5.jpg",
+    "isCurrentUser": false,
+    "bio": "Audits incoming donations, tracks resource allocation balances, and prepares transparent cost summaries to maintain absolute donor accountability.",
+    "badges": [
+      "Fund Audits",
+      "Transparency",
+      "Financial Reporting"
+    ],
+    "social": {
+      "email": "mailto:david.chen@example.com",
+      "facebook": "https://www.facebook.com/andreraphael.santos.9"
+    }
+  },
+  {
+    "id": 6,
+    "name": "Myko Campomanes",
+    "role": "Youth & Education Programs Lead",
+    "title": "Education",
+    "image": "/img/team-6.jpg",
+    "isCurrentUser": false,
+    "bio": "Designs student learning care kits, organizes school book drives, and directs educational support initiatives for underprivileged elementary students.",
+    "badges": [
+      "Youth Programs",
+      "Education Advocate",
+      "School Drives"
+    ],
+    "social": {
+      "email": "mailto:maria.santos@example.com",
+      "facebook": "https://facebook.com"
     }
   }
 ]

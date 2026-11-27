@@ -22,7 +22,7 @@ interface TeamProps {
   onNavigate?: (page: 'home' | 'about') => void;
 }
 
-export default function Team({ onNavigate }: TeamProps) {
+export default function Team({ onNavigate: _onNavigate }: TeamProps) {
   const [members, setMembers] = useState<TeamMember[]>(initialMembers);
 
   useEffect(() => {
@@ -39,140 +39,104 @@ export default function Team({ onNavigate }: TeamProps) {
       });
   }, []);
 
-  const handleSupportClick = (e: React.MouseEvent) => {
-    e.preventDefault();
-    if (onNavigate) {
-      onNavigate('home');
-    }
-    setTimeout(() => {
-      const el = document.getElementById('donate');
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
-      }
-    }, 100);
-  };
-
   return (
     <div id="team" className="container-fluid py-5">
       <div className="container">
         <div className="text-center mx-auto mb-5" style={{ maxWidth: 650 }}>
-          <p className="section-title bg-white text-center text-primary px-3">Founder</p>
-          <h1 className="display-6 mb-3">About the Founder & Developer</h1>
+          <p className="section-title bg-white text-center text-primary px-3">Our Team</p>
+          <h1 className="display-6 mb-3">Meet the People Driving Our Mission</h1>
           <p className="text-muted">
-            Charitize was built to drive direct, transparent community relief through modern web technology.
+            Dedicated coordinators, developers, and community leaders working hand-in-hand to bring transparent relief and support to families in need.
           </p>
         </div>
-        <div className="row justify-content-center">
+        <div className="row g-4">
           {members.map((m) => (
-            <div key={m.id} className="col-lg-10">
-              <div className="team-item bg-white p-4 p-md-5 rounded shadow-sm border">
-                <div className="row g-4 align-items-center">
-                  <div className="col-md-5 text-center">
-                    <div className="position-relative d-inline-block w-100">
-                      <img
-                        className="img-fluid rounded shadow"
-                        src={m.image}
-                        alt={m.name}
-                        style={{ width: '100%', maxHeight: '350px', objectFit: 'cover' }}
-                      />
-                      <span className="badge bg-secondary position-absolute top-0 start-0 m-3 px-3 py-2 fs-6">
-                        {m.title || 'Founder'}
-                      </span>
+            <div key={m.id} className="col-lg-4 col-md-6">
+              <div className="team-item bg-white rounded shadow-sm border overflow-hidden h-100 d-flex flex-column">
+                <div className="position-relative overflow-hidden" style={{ height: '280px' }}>
+                  <img
+                    className="img-fluid w-100 h-100"
+                    src={m.image}
+                    alt={m.name}
+                    style={{ objectFit: 'cover' }}
+                  />
+                  {m.title && (
+                    <span className="badge bg-secondary position-absolute top-0 start-0 m-3 px-3 py-2 fs-6">
+                      {m.title}
+                    </span>
+                  )}
+                  {m.isCurrentUser && (
+                    <span className="badge bg-primary position-absolute top-0 end-0 m-3 px-3 py-2 fs-6 text-white">
+                      Lead
+                    </span>
+                  )}
+                </div>
+
+                <div className="p-4 d-flex flex-column flex-grow-1 text-center">
+                  <h4 className="fw-bold mb-1 text-dark">{m.name}</h4>
+                  <p className="text-primary fw-semi-bold small text-uppercase mb-3">{m.role}</p>
+
+                  <p className="text-muted small mb-3 flex-grow-1" style={{ lineHeight: '1.6' }}>
+                    {m.bio}
+                  </p>
+
+                  {m.badges && m.badges.length > 0 && (
+                    <div className="d-flex flex-wrap justify-content-center gap-1 mb-3">
+                      {m.badges.map((badge, idx) => (
+                        <span key={idx} className="badge bg-light text-dark border px-2 py-1 small">
+                          {badge}
+                        </span>
+                      ))}
                     </div>
+                  )}
 
-                    <div className="d-flex justify-content-center gap-2 mt-4">
-                      {m.social?.github && (
-                        <a
-                          className="btn btn-square btn-primary text-white"
-                          href={m.social.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="GitHub Profile"
-                          title="GitHub Profile"
-                        >
-                          <i className="fab fa-github" />
-                        </a>
-                      )}
-                      {m.social?.email && (
-                        <a
-                          className="btn btn-square btn-primary text-white"
-                          href={m.social.email}
-                          aria-label="Send Email"
-                          title="Email Me"
-                        >
-                          <i className="fa-solid fa-envelope" />
-                        </a>
-                      )}
-                      {m.social?.facebook && (
-                        <a
-                          className="btn btn-square btn-primary text-white"
-                          href={m.social.facebook}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Facebook Profile"
-                          title="Facebook"
-                        >
-                          <i className="fab fa-facebook-f" />
-                        </a>
-                      )}
-                      {m.social?.twitter && (
-                        <a
-                          className="btn btn-square btn-primary text-white"
-                          href={m.social.twitter}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="X (Twitter) Profile"
-                          title="Twitter / X"
-                        >
-                          <i className="fab fa-x-twitter" />
-                        </a>
-                      )}
-                    </div>
-                  </div>
-
-                  <div className="col-md-7 ps-md-4">
-                    <span className="text-primary fw-bold text-uppercase small">Founder &amp; Developer</span>
-                    <h2 className="display-6 fw-bold mb-1">{m.name}</h2>
-                    <p className="text-muted fs-5 mb-3">{m.role}</p>
-
-                    <div className="p-3 bg-light rounded mb-4 border-start border-primary border-4 text-start">
-                      <h6 className="fw-bold text-dark mb-2">
-                        <i className="fa-solid fa-user-tie text-primary me-2" />
-                        Bio
-                      </h6>
-                      <p className="mb-0 text-muted" style={{ lineHeight: '1.7' }}>
-                        {m.bio}
-                      </p>
-                    </div>
-
-                    {m.badges && m.badges.length > 0 && (
-                      <div className="d-flex flex-wrap gap-2 mb-4">
-                        {m.badges.map((badge, idx) => (
-                          <span key={idx} className="badge bg-light text-dark border px-3 py-2">
-                            <i className="fa-solid fa-check text-primary me-1" />
-                            {badge}
-                          </span>
-                        ))}
-                      </div>
-                    )}
-
-                    <div className="d-flex flex-wrap gap-3">
-                      <button
-                        type="button"
-                        onClick={handleSupportClick}
-                        className="btn btn-primary py-2 px-4 shadow-sm"
-                      >
-                        <i className="fa-solid fa-heart me-2" />
-                        Support My Cause
-                      </button>
+                  <div className="d-flex justify-content-center gap-2 pt-3 border-top mt-auto">
+                    {m.social?.github && (
                       <a
-                        href={m.social?.email || 'mailto:Bacron07@gmail.com'}
-                        className="btn btn-outline-secondary py-2 px-4"
+                        className="btn btn-sm btn-square btn-outline-primary"
+                        href={m.social.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} GitHub`}
+                        title="GitHub"
                       >
-                        <i className="fa-solid fa-paper-plane me-2" />
-                        Contact Me
+                        <i className="fab fa-github" />
                       </a>
-                    </div>
+                    )}
+                    {m.social?.email && (
+                      <a
+                        className="btn btn-sm btn-square btn-outline-primary"
+                        href={m.social.email}
+                        aria-label={`Email ${m.name}`}
+                        title="Email"
+                      >
+                        <i className="fa-solid fa-envelope" />
+                      </a>
+                    )}
+                    {m.social?.facebook && (
+                      <a
+                        className="btn btn-sm btn-square btn-outline-primary"
+                        href={m.social.facebook}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} Facebook`}
+                        title="Facebook"
+                      >
+                        <i className="fab fa-facebook-f" />
+                      </a>
+                    )}
+                    {m.social?.twitter && (
+                      <a
+                        className="btn btn-sm btn-square btn-outline-primary"
+                        href={m.social.twitter}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} X / Twitter`}
+                        title="X / Twitter"
+                      >
+                        <i className="fab fa-x-twitter" />
+                      </a>
+                    )}
                   </div>
                 </div>
               </div>
