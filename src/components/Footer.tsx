@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { CMS_API_BASE } from '../config/api';
 
 interface FooterProps {
   onNavigate?: (page: 'home' | 'about') => void;
@@ -9,9 +10,26 @@ export default function Footer({ onNavigate }: FooterProps) {
   const [subscribed, setSubscribed] = useState(false);
   const [infoModalMessage, setInfoModalMessage] = useState<string | null>(null);
 
+  useEffect(() => {
+    if (!infoModalMessage) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setInfoModalMessage(null);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [infoModalMessage]);
+
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
-    if (newsletterEmail.trim()) {
+    const email = newsletterEmail.trim();
+    if (email) {
+      fetch(`${CMS_API_BASE}/newsletter`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      }).catch(() => {
+        // Non-blocking if CMS API is offline
+      });
       setSubscribed(true);
       setNewsletterEmail('');
       setTimeout(() => setSubscribed(false), 5000);
@@ -93,7 +111,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               <p className="mb-2">
                 <i className="fa fa-envelope me-3 text-primary" />
                 <a href="mailto:Bacron07@gmail.com" className="text-white-50 text-decoration-none">
-                  Bacron07@gmail.com
+                  Charitize@gmail.com
                 </a>
               </p>
               <div className="d-flex pt-3">
@@ -187,6 +205,7 @@ export default function Footer({ onNavigate }: FooterProps) {
               >
                 &rsaquo; Support &amp; FAQ
               </button>
+
             </div>
             <div className="col-lg-3 col-md-6">
               <h4 className="text-light mb-4">Active Hours</h4>
@@ -236,8 +255,9 @@ export default function Footer({ onNavigate }: FooterProps) {
           tabIndex={-1}
           style={{ backgroundColor: 'rgba(0,0,0,0.6)', zIndex: 1050 }}
           role="dialog"
+          onClick={() => setInfoModalMessage(null)}
         >
-          <div className="modal-dialog modal-dialog-centered">
+          <div className="modal-dialog modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content">
               <div className="modal-header bg-primary text-white">
                 <h5 className="modal-title">Information</h5>

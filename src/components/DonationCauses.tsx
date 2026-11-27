@@ -1,5 +1,6 @@
 // src/components/DonationCauses.tsx
 import { useState, useEffect, useRef } from 'react';
+import { CMS_API_BASE } from '../config/api';
 
 interface CauseItem {
   id: number;
@@ -47,11 +48,29 @@ const CAUSES: CauseItem[] = [
 
 interface DonationCausesProps {
   onSelectCause?: (causeTitle: string) => void;
+  refreshKey?: number;
 }
 
-export default function DonationCauses({ onSelectCause }: DonationCausesProps) {
+export default function DonationCauses({ onSelectCause, refreshKey = 0 }: DonationCausesProps) {
+  const [causes, setCauses] = useState<CauseItem[]>(CAUSES);
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const sectionRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    fetch(`${CMS_API_BASE}/causes`)
+      .then((res) => {
+        if (!res.ok) throw new Error('Failed to fetch causes from CMS');
+        return res.json();
+      })
+      .then((data: CauseItem[]) => {
+        if (Array.isArray(data) && data.length > 0) {
+          setCauses(data);
+        }
+      })
+      .catch(() => {
+        // Fallback already initialized from CAUSES
+      });
+  }, [refreshKey]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -91,7 +110,7 @@ export default function DonationCauses({ onSelectCause }: DonationCausesProps) {
           <p className="text-muted mb-0">Every donation directly funds verified supplies and on-the-ground support.</p>
         </div>
         <div className="row g-4">
-          {CAUSES.map((cause) => (
+          {causes.map((cause) => (
             <div key={cause.id} className="col-md-6 col-lg-4">
               <div 
                 className="donation-item d-flex h-100 p-4 bg-white rounded shadow-sm"

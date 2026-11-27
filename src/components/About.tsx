@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import aboutDataJson from '../data/about.json';
+import { CMS_API_BASE } from '../config/api';
 
 interface AboutData {
   image: string;
@@ -32,9 +33,9 @@ export default function About({ onNavigate }: AboutProps) {
   const [aboutData, setAboutData] = useState<AboutData>(aboutDataJson);
 
   useEffect(() => {
-    fetch('/data/about.json')
+    fetch(`${CMS_API_BASE}/about`)
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch about.json');
+        if (!res.ok) throw new Error('Failed to fetch about from CMS');
         return res.json();
       })
       .then((data: AboutData) => {

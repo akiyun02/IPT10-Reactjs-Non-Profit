@@ -2,15 +2,15 @@
   {
     "id": 1,
     "name": "Andre Macapinlac",
-    "role": "Founder & Lead Developer",
-    "title": "Founder",
+    "role": "Project Lead & Full-Stack Developer",
+    "title": "Lead Dev",
     "image": "/img/team-1.jpg",
     "isCurrentUser": true,
-    "bio": "Software engineering student and founder of Charitize. Leads full-stack web engineering, Stripe payment systems, and coordinates transparent community philanthropy.",
+    "bio": "Leads the overall architecture of the Charitize platform, integrating the React TypeScript frontend, Laravel Headless CMS API, and Stripe checkout workflows.",
     "badges": [
-      "Founder",
-      "Full-Stack Web",
-      "Stripe Gateway"
+      "Project Lead",
+      "Full-Stack",
+      "System Architecture"
     ],
     "social": {
       "github": "https://github.com/akiyun02",
@@ -22,15 +22,15 @@
   {
     "id": 2,
     "name": "Sofia Alvarez",
-    "role": "Operations & Outreach Director",
-    "title": "Operations",
+    "role": "UI/UX Designer & Frontend Developer",
+    "title": "Frontend",
     "image": "/img/team-2.jpg",
     "isCurrentUser": false,
-    "bio": "Oversees ground-level community missions, directing nutritious food distribution pantries and establishing trusted partnerships with local barangays.",
+    "bio": "Designs responsive interfaces, page layouts, and interactive components in React and Bootstrap to ensure a clean, accessible donor experience.",
     "badges": [
-      "Field Operations",
-      "Community Outreach",
-      "Relief Drives"
+      "React & TypeScript",
+      "UI/UX Design",
+      "Responsive CSS"
     ],
     "social": {
       "email": "mailto:sofia.alvarez@example.com",
@@ -41,15 +41,15 @@
   {
     "id": 3,
     "name": "Marcus Vance",
-    "role": "Logistics & Supply Coordinator",
-    "title": "Logistics",
+    "role": "Backend & Laravel API Engineer",
+    "title": "Backend",
     "image": "/img/team-3.jpg",
     "isCurrentUser": false,
-    "bio": "Manages procurement, inventory tracking, and efficient transport of essential food staples, hygiene packs, and water filtration equipment.",
+    "bio": "Builds and maintains the Laravel headless REST API, Filament admin dashboard, and Stripe payment intent endpoints powering dynamic site content.",
     "badges": [
-      "Supply Chain",
-      "Procurement",
-      "Resource Logistics"
+      "Laravel 13",
+      "REST API",
+      "Filament CMS"
     ],
     "social": {
       "email": "mailto:marcus.vance@example.com",
@@ -59,15 +59,15 @@
   {
     "id": 4,
     "name": "Elena Ramirez",
-    "role": "Volunteer & Community Relations",
-    "title": "Volunteers",
+    "role": "Database & Data Modeling Engineer",
+    "title": "Database",
     "image": "/img/team-4.jpg",
     "isCurrentUser": false,
-    "bio": "Coordinates volunteer orientations, mobilizes youth advocates, and ensures that on-the-ground support operations run smoothly, safely, and respectfully.",
+    "bio": "Designs relational database schemas, migrations, and seeders for causes, team profiles, donations, and newsletter records with full data integrity.",
     "badges": [
-      "Volunteer Lead",
-      "Partner Relations",
-      "Community Engagement"
+      "SQLite / MySQL",
+      "Eloquent ORM",
+      "Schema Design"
     ],
     "social": {
       "email": "mailto:elena.ramirez@example.com",
@@ -77,15 +77,15 @@
   {
     "id": 5,
     "name": "David Chen",
-    "role": "Finance & Transparency Officer",
-    "title": "Finance",
+    "role": "Payment Security & DevOps Engineer",
+    "title": "Security",
     "image": "/img/team-5.jpg",
     "isCurrentUser": false,
-    "bio": "Audits incoming donations, tracks resource allocation balances, and prepares transparent cost summaries to maintain absolute donor accountability.",
+    "bio": "Configures CORS policies, environment secrets, Stripe intent validation, and local multi-server startup automation.",
     "badges": [
-      "Fund Audits",
-      "Transparency",
-      "Financial Reporting"
+      "Stripe Security",
+      "API Validation",
+      "DevOps"
     ],
     "social": {
       "email": "mailto:david.chen@example.com",
@@ -95,15 +95,15 @@
   {
     "id": 6,
     "name": "Maria Santos",
-    "role": "Youth & Education Programs Lead",
-    "title": "Education",
+    "role": "QA Tester & Content Strategist",
+    "title": "QA & Docs",
     "image": "/img/team-6.jpg",
     "isCurrentUser": false,
-    "bio": "Designs student learning care kits, organizes school book drives, and directs educational support initiatives for underprivileged elementary students.",
+    "bio": "Writes automated PHPUnit feature tests, verifies cross-browser button flows, and curates clear, accurate copy across the platform.",
     "badges": [
-      "Youth Programs",
-      "Education Advocate",
-      "School Drives"
+      "PHPUnit Testing",
+      "QA Verification",
+      "CMS Content"
     ],
     "social": {
       "email": "mailto:maria.santos@example.com",

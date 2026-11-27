@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import initialMembers from '../data/team.json';
+import { CMS_API_BASE } from '../config/api';
 
 export interface TeamMember {
   id: number;
@@ -26,13 +27,15 @@ export default function Team({ onNavigate: _onNavigate }: TeamProps) {
   const [members, setMembers] = useState<TeamMember[]>(initialMembers);
 
   useEffect(() => {
-    fetch('/data/team.json')
+    fetch(`${CMS_API_BASE}/team`)
       .then((res) => {
-        if (!res.ok) throw new Error('Failed to fetch team.json');
+        if (!res.ok) throw new Error('Failed to fetch team from CMS');
         return res.json();
       })
       .then((data: TeamMember[]) => {
-        setMembers(data);
+        if (Array.isArray(data) && data.length > 0) {
+          setMembers(data);
+        }
       })
       .catch(() => {
         // Fallback already loaded from imported JSON
@@ -44,9 +47,9 @@ export default function Team({ onNavigate: _onNavigate }: TeamProps) {
       <div className="container">
         <div className="text-center mx-auto mb-5" style={{ maxWidth: 650 }}>
           <p className="section-title bg-white text-center text-primary px-3">Our Team</p>
-          <h1 className="display-6 mb-3">Meet the People Driving Our Mission</h1>
+          <h1 className="display-6 mb-3">Meet the Web Development Team</h1>
           <p className="text-muted">
-            Dedicated coordinators, developers, and community leaders working hand-in-hand to bring transparent relief and support to families in need.
+            The engineers, designers, and database specialists who built and maintain the Charitize platform.
           </p>
         </div>
         <div className="row g-4">
@@ -135,6 +138,18 @@ export default function Team({ onNavigate: _onNavigate }: TeamProps) {
                         title="X / Twitter"
                       >
                         <i className="fab fa-x-twitter" />
+                      </a>
+                    )}
+                    {m.social?.instagram && (
+                      <a
+                        className="btn btn-sm btn-square btn-outline-primary"
+                        href={m.social.instagram}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`${m.name} Instagram`}
+                        title="Instagram"
+                      >
+                        <i className="fab fa-instagram" />
                       </a>
                     )}
                   </div>

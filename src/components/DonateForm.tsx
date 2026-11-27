@@ -1,8 +1,9 @@
 // src/components/DonateForm.tsx
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
 import CheckoutForm from "./CheckoutForm";
+import { CMS_API_BASE } from "../config/api";
 
 // Replace with your real Stripe Publishable Key if you have one
 const stripePromise = loadStripe(
@@ -15,9 +16,10 @@ const PRESET_AMOUNTS: number[] = [10, 20, 50, 100];
 interface DonateFormProps {
   selectedCause?: string;
   onClearCause?: () => void;
+  onDonationRecorded?: () => void;
 }
 
-export default function DonateForm({ selectedCause, onClearCause }: DonateFormProps) {
+export default function DonateForm({ selectedCause, onClearCause, onDonationRecorded }: DonateFormProps) {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [selectedAmount, setSelectedAmount] = useState<number>(20);
@@ -28,6 +30,18 @@ export default function DonateForm({ selectedCause, onClearCause }: DonateFormPr
   const [isInitializing, setIsInitializing] = useState<boolean>(false);
   const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const [initError, setInitError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get("status") === "success") {
+      setIsSuccess(true);
+      const cleanUrl = window.location.pathname + window.location.hash;
+      window.history.replaceState({}, "", cleanUrl);
+      setTimeout(() => {
+        document.getElementById("donate")?.scrollIntoView({ behavior: "smooth" });
+      }, 150);
+    }
+  }, []);
 
   const parsedCustom = Number(customAmountStr);
   const isCustomInvalid = isCustomAmount && (!customAmountStr.trim() || isNaN(parsedCustom) || parsedCustom < 1);
@@ -178,6 +192,21 @@ export default function DonateForm({ selectedCause, onClearCause }: DonateFormPr
                       donorEmail={email}
                       onCancel={() => setClientSecret(null)}
                       onSuccess={() => {
+                        fetch(`${CMS_API_BASE}/donations`, {
+                          method: "POST",
+                          headers: { "Content-Type": "application/json" },
+                          body: JSON.stringify({
+                            cause_title: selectedCause || null,
+                            donor_name: name,
+                            donor_email: email,
+                            amount: activeAmount,
+                            status: "succeeded",
+                          }),
+                        })
+                          .then(() => onDonationRecorded?.())
+                          .catch(() => {
+                            // Non-blocking if CMS API is offline
+                          });
                         setClientSecret(null);
                         setIsSuccess(true);
                       }}

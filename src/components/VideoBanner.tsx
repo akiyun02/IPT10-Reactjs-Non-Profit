@@ -1,8 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 export default function VideoBanner() {
   const [isVideoOpen, setIsVideoOpen] = useState<boolean>(false);
   const videoSrc = "https://www.youtube.com/embed/DWRcNpR6Kdc";
+
+  useEffect(() => {
+    if (!isVideoOpen) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setIsVideoOpen(false);
+    };
+    window.addEventListener('keydown', onKeyDown);
+    return () => window.removeEventListener('keydown', onKeyDown);
+  }, [isVideoOpen]);
 
   return (
     <>
@@ -48,8 +57,9 @@ export default function VideoBanner() {
           tabIndex={-1} 
           style={{ backgroundColor: 'rgba(0,0,0,0.7)' }}
           role="dialog"
+          onClick={() => setIsVideoOpen(false)}
         >
-          <div className="modal-dialog modal-lg modal-dialog-centered">
+          <div className="modal-dialog modal-lg modal-dialog-centered" onClick={(e) => e.stopPropagation()}>
             <div className="modal-content rounded-0">
               <div className="modal-header">
                 <h5 className="modal-title">YouTube Video</h5>

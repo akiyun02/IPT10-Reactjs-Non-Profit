@@ -20,6 +20,7 @@ import BackToTop from './components/BackToTop';
 export default function App() {
   const [currentPage, setCurrentPage] = useState<'home' | 'about'>('home');
   const [selectedCause, setSelectedCause] = useState<string>('');
+  const [causesRefreshKey, setCausesRefreshKey] = useState<number>(0);
 
   const handleSelectCause = (causeTitle: string) => {
     setSelectedCause(causeTitle);
@@ -41,8 +42,12 @@ export default function App() {
             <VideoBanner />
             <About onNavigate={setCurrentPage} />
             <Features onNavigate={setCurrentPage} />
-            <DonationCauses onSelectCause={handleSelectCause} />
-            <DonateForm selectedCause={selectedCause} onClearCause={() => setSelectedCause('')} />
+            <DonationCauses onSelectCause={handleSelectCause} refreshKey={causesRefreshKey} />
+            <DonateForm
+              selectedCause={selectedCause}
+              onClearCause={() => setSelectedCause('')}
+              onDonationRecorded={() => setCausesRefreshKey((k) => k + 1)}
+            />
             <Team onNavigate={setCurrentPage} />
             <Testimonials />
           </>
